@@ -2,6 +2,7 @@
 
 import json
 import os
+import random
 import requests
 
 LAT = "39.753325"
@@ -11,7 +12,7 @@ KEY = os.environ['ZOMATO_API_KEY']
 REQUEST_URL="https://developers.zomato.com/api/v2.1/search\
 ?entity_id=305&lat=39.753325&lon=-105.003294&radius=1000\
 &cuisines=1%2C3%2C148%2C55"
-HEADERS={'user-key': KEY}
+HEADERS={"user-key": KEY}
 
 def get_restaurants():
     """
@@ -51,5 +52,18 @@ def load_restaurants():
             return restaurants
     return restaurants
 
-if __name__ == "__main__":
+def pick_restaurant():
     restaurants = load_restaurants()
+    element = random.randrange(0, len(restaurants) - 1)
+    restaurant = restaurants[element]["restaurant"]
+
+    return {
+        "name": restaurant["name"],
+        "address": restaurant["location"]["address"],
+        "price": restaurant["price_range"],
+        "cuisines": restaurant["cuisines"]
+    }
+
+if __name__ == "__main__":
+    restaurant = pick_restaurant()
+    print restaurant
