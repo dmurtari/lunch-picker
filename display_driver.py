@@ -17,7 +17,7 @@ SPI_DEVICE = 0
 def show_lunch():
     disp = LCD.PCD8544(DC, RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE,\
                                                max_speed_hz=4000000))
-    disp.begin(contrast=100)
+    disp.begin(contrast=45)
     
     # Clear display.
     disp.clear()
@@ -36,8 +36,11 @@ def show_lunch():
     # Load default font.
     font = ImageFont.load_default()
      
-    # Write some text.
-    draw.text((0,0), 'Lunch At:', font=font)
+    restaurant = restaurants.pick_restaurant()
+    draw.text((0,0), 'GOTO (' + '$' * restaurant["price"] + ')', font=font)
+    draw.text((0,10), restaurant["name"], font=font)
+    draw.text((0,20), '(' + restaurant["cuisines"] +')', font=font)
+    draw.text((0,30), restaurant["address"], font=font)
      
     # Display image.
     disp.image(image)
