@@ -37,9 +37,9 @@ def show_lunch():
     font = ImageFont.load_default()
      
     restaurant = restaurants.pick_restaurant()
-    draw.text((0,0), 'GOTO (' + '$' * restaurant["price"] + ')', font=font)
+    draw.text((0,0), 'Lunch! (' + '$' * restaurant["price"] + ')', font=font)
     draw.text((0,10), restaurant["name"], font=font)
-    draw.text((0,20), '(' + restaurant["cuisines"] +')', font=font)
+    draw.text((0,20), restaurant["cuisines"], font=font)
     draw.text((0,30), restaurant["address"], font=font)
      
     # Display image.
@@ -48,4 +48,4 @@ def show_lunch():
     return
 
 if __name__ == "__main__":
-    show_lunch()        
+    show_lunch()

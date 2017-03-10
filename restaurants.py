@@ -66,4 +66,4 @@ def pick_restaurant():
 
 if __name__ == "__main__":
     restaurant = pick_restaurant()
-    print restaurant
+    print(restaurant)
