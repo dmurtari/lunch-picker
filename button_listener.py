@@ -1,6 +1,7 @@
+#!/usr/bin/python
+
 import RPi.GPIO as GPIO
 import time
-
 import display_driver
 
 PIN = 18
