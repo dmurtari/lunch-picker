@@ -61,7 +61,8 @@ def pick_restaurant():
         "name": restaurant["name"],
         "address": restaurant["location"]["address"],
         "price": restaurant["price_range"],
-        "cuisines": restaurant["cuisines"]
+        "cuisines": restaurant["cuisines"],
+        "rating": restaurant["user_rating"]["aggregate_rating"]
     }
 
 if __name__ == "__main__":

@@ -30,10 +30,15 @@ def show_lunch():
     price = '$' * restaurant["price"]
     cuisines = restaurant["cuisines"].split(",")[0]
     address = restaurant["address"].split(",")[0]
+    if restaurant["rating"] == "0":
+        rating = "No ratings"
+    else:
+        rating = restaurant["rating"] + "/5"
 
     x = 0
     max_x = max(len(name), len(cuisines), len(address)) * 6 - LCD.LCDWIDTH
     iterations = 0
+
     while True:
         disp.clear()
         disp.display()
@@ -43,10 +48,11 @@ def show_lunch():
         draw.rectangle((0, 0 ,LCD.LCDWIDTH, LCD.LCDHEIGHT), outline=255, fill=255)
         time.sleep(0.1)
 
-        draw.text((x,0), 'Lunch! (' + price + ')', font=font)
-        draw.text((x,10), name, font=font)
-        draw.text((x,20), cuisines, font=font)
-        draw.text((x,30), address, font=font)
+        draw.text((x,0), 'Go Eat At:', font=font)
+        draw.text((x,9), name, font=font)
+        draw.text((x,18), cuisines, font=font)
+        draw.text((x,27), address, font=font)
+        draw.text((x,36), rating + ' (' + price + ')', font=font)
 
         disp.image(image)
         disp.display()
